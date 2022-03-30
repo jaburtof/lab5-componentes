@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"></meta>
+    <meta http-equiv="Content-Type" content="text/html"></meta>
+    <title>Lab 5 by Jr</title>
+</head>
+<body>
+<div>
+    <h1>Lab 5 by Jr</h1>
+    <a href="/agregarEntrada">Add entry</a>
+    </br>
+    <a href="/agregarPersona">Add a person</a>
+    </br>
+    <a href="/verPersonas">List of people</a>
+    <ul>
+        <div th:each="entry,status : ${journal}">
+            <li>
+                <div></div>
+                <div>
+                    <div>
+                        <h4><span th:text="${entry.title}">TITLE</span></h4>
+                        <p><small><i></i>
+                            <span th:text="${entry.createdAsShort}">CREATED</span></small></p>
+                    </div>
+                    <div class="tl-body">
+                        <p><span th:text="${entry.summary}">SUMMARY</span></p>
+                    </div>
+                </div>
+                <a th:href="@{/editar/{id}(id=${entry.id})}">Editar</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a th:href="@{/borrar/{id}(id=${entry.id})}">Borrar</a>
+            </li>
+        </div>
+    </ul>
+</div>
+</body>
+</html>
